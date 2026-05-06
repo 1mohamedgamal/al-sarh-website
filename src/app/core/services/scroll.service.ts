@@ -8,7 +8,7 @@ export class ScrollService {
   scrollTo(sectionId: string): void {
     const el = this.document.getElementById(sectionId);
     if (el) {
-      const headerOffset = 80;
+      const headerOffset = 130;
       const top = el.getBoundingClientRect().top + window.scrollY - headerOffset;
       window.scrollTo({ top, behavior: 'smooth' });
     }

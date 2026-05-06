@@ -57,11 +57,28 @@ import { ProjectModalComponent } from './project-modal/project-modal.component';
 
               <!-- Visual -->
               <div class="card-visual">
-                <div class="card-gradient" [class]="'gradient-' + ((project.id % 4) + 1)">
-                  <div class="grid-overlay" aria-hidden="true"></div>
-                  <span class="project-label" aria-hidden="true">PROJECT N° {{ project.id.toString().padStart(2, '0') }}</span>
-                  <div class="cat-icon" aria-hidden="true" [innerHTML]="getCatIcon(project.category)"></div>
-                </div>
+                @if (project.images.length > 0) {
+                  <img
+                    class="card-img"
+                    [src]="project.images[0]"
+                    [alt]="project.titleAr"
+                    loading="lazy">
+                  <div class="card-img-overlay" aria-hidden="true"></div>
+                } @else {
+                  <div class="card-gradient" [class]="'gradient-' + ((project.id % 4) + 1)">
+                    <div class="grid-overlay" aria-hidden="true"></div>
+                    <div class="cat-icon" aria-hidden="true" [innerHTML]="getCatIcon(project.category)"></div>
+                  </div>
+                }
+
+                <span class="project-label" aria-hidden="true">PROJECT N° {{ project.id.toString().padStart(2, '0') }}</span>
+
+                @if (project.images.length > 1) {
+                  <span class="img-count" aria-hidden="true">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+                    {{ project.images.length }}
+                  </span>
+                }
 
                 <!-- Hover overlay -->
                 <div class="card-hover-overlay" aria-hidden="true">
@@ -121,56 +138,64 @@ export class ProjectsComponent {
       location: 'العاصمة الإدارية الجديدة', year: '2017', category: 'سكني',
       client: 'الهيئة الهندسية للقوات المسلحة',
       description: 'تنفيذ الهيكل الخرساني وأعمال التشطيبات الكاملة لـ 18 فيلا سكنية فاخرة بأعلى مستوى من الجودة والدقة',
-      scope: ['هيكل خرساني', 'تشطيبات داخلية', 'تشطيبات خارجية', 'توريدات'], icon: '🏡'
+      scope: ['هيكل خرساني', 'تشطيبات داخلية', 'تشطيبات خارجية', 'توريدات'], icon: '🏡',
+      images: ['assets/projects/capital/1.jpeg','assets/projects/capital/2.jpeg','assets/projects/capital/3.jpeg','assets/projects/capital/4.jpeg']
     },
     {
       id: 2, titleAr: '9 فيلات سكنية - مشروع R6', titleEn: '9 Residential Villas - R6 Project',
       location: 'العاصمة الإدارية الجديدة', year: '2018', category: 'سكني',
       client: 'الهيئة الهندسية للقوات المسلحة',
       description: 'تنفيذ متكامل لـ 9 فيلات سكنية بأعلى معايير الجودة',
-      scope: ['هيكل خرساني', 'تشطيبات'], icon: '🏘️'
+      scope: ['هيكل خرساني', 'تشطيبات'], icon: '🏘️',
+      images: ['assets/projects/capital/5.jpeg','assets/projects/capital/6.jpeg','assets/projects/capital/7.jpeg']
     },
     {
       id: 3, titleAr: '22 فيلا سكنية - مشروع R2', titleEn: '22 Residential Villas - R2 Project',
       location: 'العاصمة الإدارية الجديدة', year: '2019', category: 'سكني',
       client: 'الهيئة الهندسية للقوات المسلحة',
       description: 'أعمال تشطيبات احترافية لـ 22 فيلا سكنية',
-      scope: ['تشطيبات داخلية وخارجية'], icon: '🏠'
+      scope: ['تشطيبات داخلية وخارجية'], icon: '🏠',
+      images: ['assets/projects/capital/8.jpeg','assets/projects/capital/9.jpeg','assets/projects/capital/10.jpeg']
     },
     {
       id: 4, titleAr: 'عمارتين سكنيتين - 12 دور', titleEn: '2 Residential Towers - 12 Floors',
       location: 'شارع فيصل، منطقة المساحة', year: '2020', category: 'سكني',
       client: 'القطاع الخاص',
       description: 'إنشاء برجين سكنيين بأعمال حفر وخوازيق وهيكل خرساني وتشطيبات',
-      scope: ['حفر وخوازيق', 'هيكل خرساني', 'تشطيبات كاملة'], icon: '🏢'
+      scope: ['حفر وخوازيق', 'هيكل خرساني', 'تشطيبات كاملة'], icon: '🏢',
+      images: ['assets/projects/faisal/1.jpeg','assets/projects/faisal/2.jpeg','assets/projects/faisal/3.jpeg','assets/projects/faisal/4.jpeg']
     },
     {
       id: 5, titleAr: 'فيلتين فاخرتين', titleEn: '2 Luxury Villas',
       location: 'المنطقة السياحية الأولى - 6 أكتوبر', year: '2021', category: 'سكني',
       client: 'القطاع الخاص',
       description: 'فيلتين فاخرتين (بدروم + أرضي + 3 أدوار) بتنفيذ متكامل',
-      scope: ['حفر وخوازيق', 'هيكل خرساني', 'تشطيبات'], icon: '🏰'
+      scope: ['حفر وخوازيق', 'هيكل خرساني', 'تشطيبات'], icon: '🏰',
+      images: ['assets/projects/tourism/1.jpeg','assets/projects/tourism/2.jpeg','assets/projects/tourism/3.jpeg','assets/projects/tourism/4.jpeg']
     },
     {
       id: 6, titleAr: '5 عمارات - 120 وحدة سكنية', titleEn: '5 Buildings - 120 Residential Units',
       location: 'منطقة النرجس - مدينة 15 مايو', year: '2021-2023', category: 'حكومي',
       client: 'هيئة المجتمعات العمرانية الجديدة',
       description: 'مشروع الإسكان الاجتماعي - 120 وحدة سكنية في 5 عمارات',
-      scope: ['هيكل خرساني', 'تشطيبات', 'إسكان اجتماعي'], icon: '🏗️'
+      scope: ['هيكل خرساني', 'تشطيبات', 'إسكان اجتماعي'], icon: '🏗️',
+      images: ['assets/projects/may/1.jpeg','assets/projects/may/2.jpeg','assets/projects/may/4.jpeg','assets/projects/may/5.jpeg']
     },
     {
       id: 7, titleAr: 'مستشفى حياة كريمة', titleEn: 'Hayah Karima Hospital',
       location: 'مدينة أشمون - محافظة المنوفية', year: '2022-2024', category: 'صحي',
       client: 'وزارة الصحة - مبادرة حياة كريمة',
       description: 'وحدة صحية متكاملة - هيكل خرساني، تشطيبات، حريق، داتا، ميكانيكا',
-      scope: ['إنشاءات', 'أعمال كهروميكانيكية', 'حريق وداتا'], icon: '🏥'
+      scope: ['إنشاءات', 'أعمال كهروميكانيكية', 'حريق وداتا'], icon: '🏥',
+      images: ['assets/projects/hospital/1.jpeg','assets/projects/hospital/2.jpeg','assets/projects/hospital/3.jpeg','assets/projects/hospital/4.jpeg','assets/projects/hospital/5.jpeg','assets/projects/hospital/6.jpeg']
     },
     {
       id: 8, titleAr: 'سوق تجاري - شمال التونسي', titleEn: 'Commercial Market - North Tounsi',
       location: 'مدينة 15 مايو', year: '2025', category: 'تجاري',
       client: 'هيئة المجتمعات العمرانية الجديدة',
       description: 'إنشاء سوق تجاري متكامل بأعمال الهيكل الخرساني والتشطيبات',
-      scope: ['هيكل خرساني', 'تشطيبات تجارية'], icon: '🏪'
+      scope: ['هيكل خرساني', 'تشطيبات تجارية'], icon: '🏪',
+      images: ['assets/projects/market/1.jpeg','assets/projects/market/2.jpeg','assets/projects/market/3.jpeg','assets/projects/market/4.jpeg']
     },
   ];
 

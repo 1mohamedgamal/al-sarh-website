@@ -8,7 +8,7 @@
   overflow: hidden;
   display: flex;
   align-items: center;
-  padding-block-start: 80px; // Header height
+  padding-block-start: 130px; // Header height
   clip-path: polygon(0 0, 100% 0, 100% 94%, 0 100%);
 
   @include respond-to(sm) {
@@ -16,6 +16,32 @@
     min-height: auto;
     padding-block: 7rem 6rem;
   }
+}
+
+// Floating particles
+.particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.particle {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba($accent-gold, 0.25);
+  animation: particle-float 7s ease-in-out infinite;
+
+  &.p-1 { width: 6px;  height: 6px;  top: 14%; left: 7%;  animation-duration: 7s;  animation-delay: 0s; }
+  &.p-2 { width: 4px;  height: 4px;  top: 38%; left: 18%; animation-duration: 9s;  animation-delay: 1.2s; background: rgba($pure-white, 0.2); }
+  &.p-3 { width: 8px;  height: 2px;  top: 22%; left: 72%; animation-duration: 6s;  animation-delay: 2s;  border-radius: 2px; background: rgba($accent-gold, 0.3); }
+  &.p-4 { width: 5px;  height: 5px;  top: 62%; left: 83%; animation-duration: 8s;  animation-delay: 0.7s; }
+  &.p-5 { width: 3px;  height: 3px;  top: 78%; left: 22%; animation-duration: 5.5s; animation-delay: 3s; background: rgba($pure-white, 0.25); }
+  &.p-6 { width: 7px;  height: 7px;  top: 50%; left: 91%; animation-duration: 10s; animation-delay: 1.8s; opacity: 0.5; }
+  &.p-7 { width: 4px;  height: 4px;  top: 88%; left: 58%; animation-duration: 7.5s; animation-delay: 4s; background: rgba($accent-gold, 0.2); }
+  &.p-8 { width: 5px;  height: 5px;  top: 8%;  left: 48%; animation-duration: 8.5s; animation-delay: 2.5s; background: rgba($pure-white, 0.2); }
+  &.p-9 { width: 3px;  height: 9px;  top: 68%; left: 5%;  animation-duration: 6.5s; animation-delay: 0.3s; border-radius: 2px; }
 }
 
 // Blueprint grid overlay
@@ -93,7 +119,18 @@ body.lang-en .hero-headline { font-family: $font-english; }
 
 .headline-gold {
   font-weight: 900;
-  color: $accent-gold;
+  background: linear-gradient(
+    90deg,
+    $accent-gold 0%,
+    lighten($accent-gold, 28%) 45%,
+    $accent-gold 60%,
+    $accent-gold 100%
+  );
+  background-size: 250% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer-text 5s linear 1.8s infinite;
 }
 
 // --- Subheading ---

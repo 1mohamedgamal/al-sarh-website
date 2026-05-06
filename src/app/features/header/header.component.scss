@@ -7,7 +7,7 @@
   inset-inline: 0;
   z-index: $z-sticky;
   transition: background $transition-med, box-shadow $transition-med, padding $transition-med;
-  padding-block: 1.25rem;
+  padding-block: 0.5rem;
 
   --bg: transparent;
   --text: #{$pure-white};
@@ -16,13 +16,26 @@
   &.scrolled {
     background: $primary-blue;
     box-shadow: 0 4px 24px rgba($darkest-navy, 0.25);
-    padding-block: 0.75rem;
+    padding-block: 0.25rem;
     --text: #{$pure-white};
   }
 
   &:not(.scrolled) {
     background: transparent;
   }
+}
+
+// Scroll progress bar
+.scroll-progress-bar {
+  position: absolute;
+  bottom: 0;
+  inset-inline-start: 0;
+  height: 2px;
+  background: $accent-gold;
+  box-shadow: 0 0 8px rgba($accent-gold, 0.6);
+  transition: width 80ms linear;
+  z-index: 1;
+  transform-origin: left;
 }
 
 .header-inner {
@@ -42,13 +55,24 @@
   text-decoration: none;
   flex-shrink: 0;
   @include focus-ring($accent-gold);
+}
 
-  .logo-mark {
-    color: inherit;
-    --bg: #{$primary-blue};
+.logo-img {
+  height: 120px;
+  width: auto;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.35));
+  transition: filter $transition-med;
+
+  .header.scrolled & {
+    height: 100px;
   }
+}
 
-  .scrolled & .logo-mark { --bg: #{$primary-blue}; }
+.drawer-logo-img {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
 }
 
 .logo-text {

@@ -62,27 +62,26 @@
   justify-content: center;
 }
 
-.feature-geo {
+.feature-photo {
   position: absolute;
   inset: 0;
-  opacity: 0.2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 600ms $ease-standard;
+}
 
-  &.geo-1 {
-    background: linear-gradient(135deg, $primary-blue 0%, transparent 60%);
-    clip-path: polygon(0 0, 60% 0, 100% 100%, 0 80%);
-  }
-  &.geo-2 {
-    background: linear-gradient(225deg, $muted-blue 0%, transparent 60%);
-    clip-path: polygon(40% 0, 100% 0, 100% 80%, 0 100%);
-  }
-  &.geo-3 {
-    background: linear-gradient(45deg, $primary-blue 0%, transparent 50%);
-    clip-path: polygon(0 20%, 100% 0, 100% 100%, 0 100%);
-  }
-  &.geo-4 {
-    background: linear-gradient(315deg, $muted-blue 0%, transparent 60%);
-    clip-path: polygon(0 0, 100% 0, 80% 100%, 0 100%);
-  }
+.feature-img:hover .feature-photo { transform: scale(1.05); }
+
+.feature-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    rgba($darkest-navy, 0.72) 0%,
+    rgba($primary-blue, 0.55) 100%
+  );
+  pointer-events: none;
 }
 
 .feature-icon-wrap {

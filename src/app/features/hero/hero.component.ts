@@ -2,16 +2,30 @@ import { Component, ChangeDetectionStrategy, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { LanguageService } from '../../core/services/language.service';
 import { ScrollService } from '../../core/services/scroll.service';
+import { AnimatedCounterComponent } from '../../shared/components/animated-counter/animated-counter.component';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, AnimatedCounterComponent],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <section id="home" class="hero" aria-label="القسم الرئيسي">
       <!-- Blueprint Grid Overlay -->
       <div class="blueprint-grid" aria-hidden="true"></div>
+
+      <!-- Floating Particles -->
+      <div class="particles" aria-hidden="true">
+        <span class="particle p-1"></span>
+        <span class="particle p-2"></span>
+        <span class="particle p-3"></span>
+        <span class="particle p-4"></span>
+        <span class="particle p-5"></span>
+        <span class="particle p-6"></span>
+        <span class="particle p-7"></span>
+        <span class="particle p-8"></span>
+        <span class="particle p-9"></span>
+      </div>
 
       <div class="container hero-inner">
         <!-- Text Content -->
@@ -55,17 +69,23 @@ import { ScrollService } from '../../core/services/scroll.service';
           <!-- Stats Row -->
           <div class="hero-stats hero-animate-7" role="list">
             <div class="stat-item" role="listitem">
-              <span class="stat-number">+8</span>
+              <span class="stat-number">
+                <app-animated-counter [target]="8" prefix="+" [duration]="1800"></app-animated-counter>
+              </span>
               <span class="stat-label">{{ lang.t('سنوات خبرة', 'Years Experience') }}</span>
             </div>
             <div class="stat-divider" aria-hidden="true"></div>
             <div class="stat-item" role="listitem">
-              <span class="stat-number">+20</span>
+              <span class="stat-number">
+                <app-animated-counter [target]="20" prefix="+" [duration]="2000"></app-animated-counter>
+              </span>
               <span class="stat-label">{{ lang.t('مشروع كبير', 'Major Projects') }}</span>
             </div>
             <div class="stat-divider" aria-hidden="true"></div>
             <div class="stat-item" role="listitem">
-              <span class="stat-number">100%</span>
+              <span class="stat-number">
+                <app-animated-counter [target]="100" suffix="%" [duration]="2200"></app-animated-counter>
+              </span>
               <span class="stat-label">{{ lang.t('رضا العملاء', 'Client Satisfaction') }}</span>
             </div>
           </div>

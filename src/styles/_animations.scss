@@ -108,6 +108,38 @@
   animation: shimmer 1.5s infinite;
 }
 
+// --- Particle float (hero background dots) ---
+@keyframes particle-float {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(12px, -22px) scale(1.15); }
+  66%       { transform: translate(-8px, 12px) scale(0.9); }
+}
+
+// --- Text shimmer (gradient sweep across text) ---
+@keyframes shimmer-text {
+  0%   { background-position: 200% center; }
+  100% { background-position: -200% center; }
+}
+
+// --- Eyebrow line draw ---
+@keyframes draw-bar {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+// --- Gold glow pulse (stat numbers) ---
+@keyframes gold-glow {
+  0%, 100% { text-shadow: none; }
+  50%       { text-shadow: 0 0 24px rgba(245, 184, 0, 0.5); }
+}
+
+// --- Slide-in arrow (CTA button) ---
+@keyframes arrow-slide {
+  0%   { transform: translateX(0); }
+  50%  { transform: translateX(5px); }
+  100% { transform: translateX(0); }
+}
+
 // --- Reduced motion ---
 @media (prefers-reduced-motion: reduce) {
   .reveal, .reveal-left, .reveal-right {
@@ -121,4 +153,6 @@
     opacity: 1;
   }
   .float-animation { animation: none; }
+  .particle { display: none; }
+  .headline-gold { animation: none; }
 }

@@ -1,5 +1,6 @@
 import {
-  Component, Input, Output, EventEmitter, ChangeDetectionStrategy, inject, HostListener
+  Component, Input, Output, EventEmitter, ChangeDetectionStrategy,
+  inject, HostListener, signal, computed
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Project } from '../../../core/models/project.model';
@@ -14,19 +15,71 @@ import { LanguageService } from '../../../core/services/language.service';
     <div class="modal-backdrop" (click)="onBackdropClick($event)" role="dialog"
       [attr.aria-label]="project.titleAr"
       aria-modal="true">
-      <div class="modal-panel" #panel>
-        <!-- Header -->
-        <div class="modal-header">
-          <div class="modal-visual">
-            <div class="visual-overlay"></div>
-            <div class="project-num">PROJECT N° {{ project.id.toString().padStart(2, '0') }}</div>
-            <span class="category-badge">{{ project.category }}</span>
+      <div class="modal-panel">
+
+        <!-- Image Gallery Header -->
+        <div class="modal-gallery">
+          <!-- Main image -->
+          <div class="gallery-main">
+            <img
+              class="gallery-img"
+              [src]="currentImage()"
+              [alt]="project.titleAr + ' - ' + (activeIndex() + 1)"
+              loading="eager">
+            <div class="gallery-overlay" aria-hidden="true"></div>
+
+            <!-- Project number & category -->
+            <span class="gallery-num">PROJECT N° {{ project.id.toString().padStart(2, '0') }}</span>
+            <span class="gallery-badge">{{ project.category }}</span>
+
+            <!-- Close button -->
             <button class="close-btn" (click)="close.emit()" [attr.aria-label]="lang.t('إغلاق', 'Close')">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                 <path d="M18 6L6 18M6 6l12 12"/>
               </svg>
             </button>
+
+            <!-- Prev / Next (only when more than 1 image) -->
+            @if (project.images.length > 1) {
+              <button class="nav-btn nav-prev" (click)="prev()" [attr.aria-label]="lang.t('السابق', 'Previous')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M15 18l-6-6 6-6"/>
+                </svg>
+              </button>
+              <button class="nav-btn nav-next" (click)="next()" [attr.aria-label]="lang.t('التالي', 'Next')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <path d="M9 18l6-6-6-6"/>
+                </svg>
+              </button>
+
+              <!-- Dot indicators -->
+              <div class="gallery-dots" aria-hidden="true">
+                @for (img of project.images; track $index) {
+                  <button
+                    class="dot"
+                    [class.active]="activeIndex() === $index"
+                    (click)="setIndex($index)">
+                  </button>
+                }
+              </div>
+            }
           </div>
+
+          <!-- Thumbnail strip (if 3+ images) -->
+          @if (project.images.length >= 3) {
+            <div class="gallery-thumbs" role="list">
+              @for (img of project.images; track $index) {
+                <button
+                  class="thumb"
+                  role="listitem"
+                  [class.active]="activeIndex() === $index"
+                  (click)="setIndex($index)"
+                  [attr.aria-label]="'صورة ' + ($index + 1)">
+                  <img [src]="img" [alt]="project.titleAr + ' thumbnail ' + ($index + 1)" loading="lazy">
+                </button>
+              }
+            </div>
+          }
         </div>
 
         <!-- Body -->
@@ -90,14 +143,33 @@ export class ProjectModalComponent {
   @Output() close = new EventEmitter<void>();
   readonly lang = inject(LanguageService);
 
+  activeIndex = signal(0);
+  currentImage = computed(() => this.project.images[this.activeIndex()] ?? '');
+
   @HostListener('keydown.escape')
-  onEscape(): void {
-    this.close.emit();
-  }
+  onEscape(): void { this.close.emit(); }
+
+  @HostListener('keydown.arrowLeft')
+  onLeft(): void { this.prev(); }
+
+  @HostListener('keydown.arrowRight')
+  onRight(): void { this.next(); }
 
   onBackdropClick(e: Event): void {
     if ((e.target as Element).classList.contains('modal-backdrop')) {
       this.close.emit();
     }
+  }
+
+  prev(): void {
+    this.activeIndex.update(i => (i - 1 + this.project.images.length) % this.project.images.length);
+  }
+
+  next(): void {
+    this.activeIndex.update(i => (i + 1) % this.project.images.length);
+  }
+
+  setIndex(i: number): void {
+    this.activeIndex.set(i);
   }
 }

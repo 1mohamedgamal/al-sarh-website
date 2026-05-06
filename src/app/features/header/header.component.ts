@@ -1,6 +1,7 @@
 import {
-  Component, ChangeDetectionStrategy, signal, inject, HostListener, OnInit
+  Component, ChangeDetectionStrategy, signal, inject, HostListener, OnInit, PLATFORM_ID
 } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { CommonModule } from '@angular/common';
 import { LanguageService } from '../../core/services/language.service';
 import { ScrollService } from '../../core/services/scroll.service';
@@ -22,19 +23,8 @@ interface NavItem {
 
         <!-- Logo -->
         <a href="#" class="logo" (click)="scrollTop($event)" aria-label="شركة الصرح - الصفحة الرئيسية">
-          <svg width="52" height="52" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" class="logo-mark" aria-hidden="true">
-            <!-- Simplified Kufic-style Al Sarh mark -->
-            <rect x="60" y="10" width="12" height="80" fill="currentColor"/>
-            <rect x="75" y="10" width="12" height="80" fill="currentColor"/>
-            <rect x="10" y="10" width="45" height="12" fill="currentColor"/>
-            <rect x="10" y="28" width="30" height="10" fill="currentColor"/>
-            <rect x="10" y="44" width="45" height="12" fill="currentColor"/>
-            <rect x="25" y="62" width="30" height="10" fill="currentColor"/>
-            <rect x="10" y="78" width="45" height="12" fill="currentColor"/>
-            <rect x="22" y="18" width="8" height="5" fill="var(--bg)"/>
-            <rect x="10" y="38" width="15" height="6" fill="var(--bg)"/>
-            <rect x="10" y="56" width="15" height="6" fill="var(--bg)"/>
-          </svg>
+          <img src="assets/icons/AS.png" alt="شركة الصرح للمقاولات العمومية والتوريدات"
+               class="logo-img" width="120" height="120">
           <div class="logo-text">
             <span class="logo-name">{{ lang.t('الصرح', 'Al Sarh') }}</span>
             <span class="logo-sub">{{ lang.t('للمقاولات', 'Contracting') }}</span>
@@ -81,15 +71,7 @@ interface NavItem {
         <div class="mobile-drawer" role="dialog" [attr.aria-label]="lang.t('قائمة التنقل', 'Navigation Menu')">
           <div class="drawer-inner">
             <div class="drawer-logo">
-              <svg width="40" height="40" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <rect x="60" y="10" width="12" height="80" fill="white"/>
-                <rect x="75" y="10" width="12" height="80" fill="white"/>
-                <rect x="10" y="10" width="45" height="12" fill="white"/>
-                <rect x="10" y="28" width="30" height="10" fill="white"/>
-                <rect x="10" y="44" width="45" height="12" fill="white"/>
-                <rect x="25" y="62" width="30" height="10" fill="white"/>
-                <rect x="10" y="78" width="45" height="12" fill="white"/>
-              </svg>
+              <img src="assets/icons/AS.png" alt="شركة الصرح" class="drawer-logo-img" width="56" height="56">
               <span>{{ lang.t('الصرح', 'Al Sarh') }}</span>
             </div>
 
@@ -117,6 +99,10 @@ interface NavItem {
           </div>
         </div>
       }
+      <!-- Scroll progress indicator -->
+      <div class="scroll-progress-bar"
+           [style.width]="scrollProgress() + '%'"
+           aria-hidden="true"></div>
     </header>
 
     <!-- Backdrop for mobile menu -->
@@ -133,6 +119,7 @@ export class HeaderComponent implements OnInit {
   isScrolled = signal(false);
   menuOpen = signal(false);
   activeSection = signal('home');
+  scrollProgress = signal(0);
 
   navItems: NavItem[] = [
     { labelAr: 'الرئيسية',   labelEn: 'Home',     section: 'home' },
@@ -150,6 +137,8 @@ export class HeaderComponent implements OnInit {
   @HostListener('window:scroll')
   onScroll(): void {
     this.isScrolled.set(window.scrollY > 60);
+    const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    this.scrollProgress.set(scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0);
   }
 
   scrollTop(e: Event): void {

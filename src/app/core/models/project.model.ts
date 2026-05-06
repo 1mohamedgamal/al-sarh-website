@@ -9,6 +9,7 @@ export interface Project {
   description: string;
   scope: string[];
   icon: string;
+  images: string[];
 }
 
 export type ProjectCategory = 'سكني' | 'تجاري' | 'حكومي' | 'صحي';

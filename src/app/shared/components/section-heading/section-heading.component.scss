@@ -34,6 +34,17 @@
   height: 2px;
   background: $accent-gold;
   flex-shrink: 0;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 600ms cubic-bezier(0.4, 0, 0.2, 1) 100ms;
+}
+
+:host-context(body.lang-en) .sh-eyebrow-line {
+  transform-origin: left;
+}
+
+:host.visible .sh-eyebrow-line {
+  transform: scaleX(1);
 }
 
 .sh-eyebrow-text {
@@ -52,6 +63,15 @@
   line-height: 1.15;
   color: $text-primary;
   letter-spacing: -0.02em;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 700ms cubic-bezier(0.4, 0, 0.2, 1) 250ms,
+              transform 700ms cubic-bezier(0.4, 0, 0.2, 1) 250ms;
+}
+
+:host.visible .sh-heading {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 :host-context(body.lang-en) .sh-heading { font-family: $font-english; }

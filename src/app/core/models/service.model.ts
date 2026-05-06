@@ -6,4 +6,5 @@ export interface ServiceItem {
   descriptionEn: string;
   icon: string;
   number: string;
+  image: string;
 }

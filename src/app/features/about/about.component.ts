@@ -29,26 +29,29 @@ interface Pillar {
         <div class="about-grid">
 
           <!-- Visual collage -->
-          <div class="about-visual" appReveal="right" [revealDelay]="0">
+          <div class="about-visual" appReveal="right" [revealDelay]="0" [revealBlur]="true">
             <div class="img-card img-card-1">
-              <div class="img-placeholder">
-                <div class="img-geo-1" aria-hidden="true"></div>
-                <span class="img-label">{{ lang.t('العاصمة الإدارية', 'New Capital') }}</span>
-              </div>
+              <img src="assets/projects/capital/4.jpeg"
+                   [alt]="lang.t('العاصمة الإدارية الجديدة', 'New Administrative Capital')"
+                   loading="lazy" class="collage-img">
+              <div class="img-shade" aria-hidden="true"></div>
+              <span class="img-label">{{ lang.t('العاصمة الإدارية', 'New Capital') }}</span>
               <div class="bracket-tl"></div>
             </div>
             <div class="img-card img-card-2">
-              <div class="img-placeholder img-placeholder-2">
-                <div class="img-geo-2" aria-hidden="true"></div>
-                <span class="img-label">{{ lang.t('مشاريع حياة كريمة', 'Hayah Karima') }}</span>
-              </div>
+              <img src="assets/projects/hospital/3.jpeg"
+                   [alt]="lang.t('مستشفى حياة كريمة', 'Hayah Karima Hospital')"
+                   loading="lazy" class="collage-img">
+              <div class="img-shade" aria-hidden="true"></div>
+              <span class="img-label">{{ lang.t('مشاريع حياة كريمة', 'Hayah Karima') }}</span>
               <div class="bracket-br"></div>
             </div>
             <div class="img-card img-card-3">
-              <div class="img-placeholder img-placeholder-3">
-                <div class="img-geo-3" aria-hidden="true"></div>
-                <span class="img-label">{{ lang.t('15 مايو', '15 May City') }}</span>
-              </div>
+              <img src="assets/projects/market/2.jpeg"
+                   [alt]="lang.t('السوق التجاري - 15 مايو', 'Commercial Market - 15 May')"
+                   loading="lazy" class="collage-img">
+              <div class="img-shade" aria-hidden="true"></div>
+              <span class="img-label">{{ lang.t('15 مايو', '15 May City') }}</span>
             </div>
             <!-- Year badge -->
             <div class="year-badge" aria-hidden="true">
