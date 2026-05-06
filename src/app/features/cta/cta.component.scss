@@ -1,0 +1,69 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.cta-band {
+  background: $primary-blue;
+  clip-path: polygon(0 6%, 100% 0, 100% 94%, 0 100%);
+  margin-block: -2rem;
+  padding-block: clamp(6rem, 12vw, 10rem);
+  position: relative;
+  overflow: hidden;
+  z-index: 2;
+}
+
+.blueprint-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba($pure-white, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba($pure-white, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.cta-inner {
+  @include container;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  position: relative;
+  z-index: 1;
+  flex-wrap: wrap;
+
+  @include respond-to(md) { flex-direction: column; text-align: center; }
+}
+
+.cta-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  flex: 1;
+}
+
+.cta-heading {
+  font-family: $font-arabic;
+  font-size: clamp(1.75rem, 3.5vw, 3rem);
+  font-weight: 900;
+  color: $pure-white;
+  line-height: 1.2;
+}
+
+body.lang-en .cta-heading { font-family: $font-english; }
+
+.cta-sub {
+  font-family: $font-arabic-body;
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  color: rgba($pure-white, 0.75);
+  line-height: 1.7;
+  max-width: 50ch;
+}
+
+body.lang-en .cta-sub { font-family: $font-english-body; }
+
+.cta-btn {
+  font-size: 1.0625rem;
+  padding: 1rem 2.5rem;
+  flex-shrink: 0;
+  white-space: nowrap;
+}

@@ -1,0 +1,285 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.projects {
+  background: $pure-white;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-marker-wrap {
+  position: absolute;
+  inset-inline-start: clamp(0.75rem, 2vw, 2.5rem);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.3;
+  pointer-events: none;
+  @include respond-to(md) { display: none; }
+
+  .marker-line { width: 1px; height: 60px; background: $muted-blue; }
+  .marker-num {
+    font-family: $font-mono;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: $muted-blue;
+    letter-spacing: 0.1em;
+    writing-mode: vertical-rl;
+  }
+}
+
+// --- Header ---
+.projects-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-block-end: clamp(2rem, 4vw, 3.5rem);
+  flex-wrap: wrap;
+}
+
+// --- Filter Pills ---
+.filter-pills {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.pill {
+  font-family: $font-arabic;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: $text-secondary;
+  background: transparent;
+  border: 1.5px solid $border-subtle;
+  border-radius: 40px;
+  padding: 0.5rem 1.25rem;
+  cursor: pointer;
+  transition: all $transition-fast;
+  @include focus-ring($primary-blue);
+
+  &:hover { border-color: $primary-blue; color: $primary-blue; }
+  &.active { background: $primary-blue; color: $pure-white; border-color: $primary-blue; }
+}
+
+body.lang-en .pill { font-family: $font-english; }
+
+// --- Projects Grid ---
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+
+  @include respond-to(lg) { grid-template-columns: repeat(6, 1fr); }
+  @include respond-to(md) { grid-template-columns: repeat(2, 1fr); }
+  @include respond-to(sm) { grid-template-columns: 1fr; }
+}
+
+// Column spans (desktop)
+.col-span-4 { grid-column: span 4; }
+.col-span-5 { grid-column: span 5; }
+.col-span-6 { grid-column: span 6; }
+.col-span-7 { grid-column: span 7; }
+.col-span-12 { grid-column: span 12; }
+
+// Tablet override
+@media (max-width: #{$bp-lg}) {
+  .col-span-4, .col-span-5, .col-span-6, .col-span-7, .col-span-12 {
+    grid-column: span 3;
+  }
+}
+
+// Mobile: all full width
+@include respond-to(md) {
+  .col-span-4, .col-span-5, .col-span-6, .col-span-7, .col-span-12 {
+    grid-column: span 1;
+  }
+}
+
+// --- Project Card ---
+.project-card {
+  border-radius: $radius-sm;
+  overflow: hidden;
+  cursor: pointer;
+  border: 1px solid $border-subtle;
+  background: $pure-white;
+  transition: box-shadow $transition-med, transform $transition-med;
+  display: flex;
+  flex-direction: column;
+
+  &:hover, &:focus-visible {
+    box-shadow: $shadow-strong;
+    transform: translateY(-4px);
+    outline: none;
+
+    .card-visual img,
+    .card-gradient { transform: scale(1.04); }
+    .card-hover-overlay { transform: translateY(0); opacity: 1; }
+    .bracket.btl { top: 6px; inset-inline-start: 6px; }
+    .bracket.bbr { bottom: 6px; inset-inline-end: 6px; }
+  }
+}
+
+// --- Visual ---
+.card-visual {
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  position: relative;
+}
+
+.card-gradient {
+  width: 100%;
+  height: 100%;
+  transition: transform $transition-slow;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &.gradient-1 { background: linear-gradient(135deg, $dark-navy 0%, $primary-blue 100%); }
+  &.gradient-2 { background: linear-gradient(135deg, darken($primary-blue, 10%) 0%, $muted-blue 100%); }
+  &.gradient-3 { background: linear-gradient(135deg, $primary-blue 0%, darken($muted-blue, 8%) 100%); }
+  &.gradient-4 { background: linear-gradient(135deg, $dark-navy 0%, darken($primary-blue, 5%) 100%); }
+}
+
+.grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba($pure-white, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba($pure-white, 0.04) 1px, transparent 1px);
+  background-size: 30px 30px;
+}
+
+.project-label {
+  position: absolute;
+  top: 1rem;
+  inset-inline-start: 1rem;
+  font-family: $font-mono;
+  font-size: 0.6rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  color: rgba($pure-white, 0.4);
+  text-transform: uppercase;
+}
+
+.cat-icon {
+  color: rgba($pure-white, 0.12);
+  position: absolute;
+  inset-inline-end: 1rem;
+  bottom: 1rem;
+
+  svg { width: 80px; height: 80px; }
+}
+
+// Hover overlay
+.card-hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba($primary-blue, 0.9);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform $transition-med, opacity $transition-med;
+}
+
+.view-label {
+  font-family: $font-arabic;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: $pure-white;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+body.lang-en .view-label { font-family: $font-english; }
+
+// Bracket animations
+.bracket {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  transition: all 300ms $ease-standard;
+  z-index: 2;
+
+  &.btl {
+    top: 0;
+    inset-inline-start: 0;
+    border-top: 1.5px solid $accent-gold;
+    border-inline-start: 1.5px solid $accent-gold;
+  }
+  &.bbr {
+    bottom: 0;
+    inset-inline-end: 0;
+    border-bottom: 1.5px solid $accent-gold;
+    border-inline-end: 1.5px solid $accent-gold;
+  }
+}
+
+// --- Card Info ---
+.card-info {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.card-category {
+  font-family: $font-mono;
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: $primary-blue;
+  background: rgba($primary-blue, 0.06);
+  padding: 0.25rem 0.625rem;
+  border-radius: 2px;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+.card-title {
+  font-family: $font-arabic;
+  font-size: clamp(0.9375rem, 1.2vw, 1.125rem);
+  font-weight: 700;
+  color: $text-primary;
+  line-height: 1.4;
+}
+
+body.lang-en .card-title { font-family: $font-english; }
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-block-start: auto;
+  padding-block-start: 0.75rem;
+  border-block-start: 1px solid $border-subtle;
+}
+
+.meta-loc {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  color: $text-muted;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  svg { flex-shrink: 0; color: $primary-blue; }
+}
+
+.meta-year {
+  font-family: $font-mono;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: $text-secondary;
+  flex-shrink: 0;
+}

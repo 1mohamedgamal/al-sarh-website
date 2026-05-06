@@ -1,0 +1,286 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.hero {
+  position: relative;
+  min-height: 100dvh;
+  background: $primary-blue;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  padding-block-start: 80px; // Header height
+  clip-path: polygon(0 0, 100% 0, 100% 94%, 0 100%);
+
+  @include respond-to(sm) {
+    clip-path: polygon(0 0, 100% 0, 100% 97%, 0 100%);
+    min-height: auto;
+    padding-block: 7rem 6rem;
+  }
+}
+
+// Blueprint grid overlay
+.blueprint-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba($pure-white, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba($pure-white, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hero-inner {
+  @include container;
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: clamp(2rem, 4vw, 5rem);
+  align-items: center;
+  position: relative;
+  z-index: 1;
+  padding-block: clamp(3rem, 6vw, 5rem);
+
+  @include respond-to(md) {
+    grid-template-columns: 1fr;
+    text-align: center;
+    .hero-stats { justify-content: center; }
+    .hero-ctas { justify-content: center; }
+    .hero-eyebrow { justify-content: center; }
+  }
+
+  @include respond-to(sm) {
+    padding-block: 2rem;
+  }
+}
+
+// --- Eyebrow ---
+.hero-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: $font-mono;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  color: $accent-gold;
+  text-transform: uppercase;
+}
+
+.eyebrow-dash {
+  color: rgba($pure-white, 0.4);
+}
+
+// --- Headline ---
+.hero-headline {
+  font-family: $font-arabic;
+  font-size: clamp(3rem, 6.5vw, 6rem);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-block: 0.75rem 1.25rem;
+}
+
+body.lang-en .hero-headline { font-family: $font-english; }
+
+.headline-light {
+  font-weight: 300;
+  color: rgba($pure-white, 0.75);
+}
+
+.headline-bold {
+  font-weight: 900;
+  color: $pure-white;
+}
+
+.headline-gold {
+  font-weight: 900;
+  color: $accent-gold;
+}
+
+// --- Subheading ---
+.hero-subheading {
+  font-family: $font-arabic-body;
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  line-height: 1.85;
+  color: rgba($pure-white, 0.72);
+  max-width: 50ch;
+  margin-block-end: 2rem;
+}
+
+body.lang-en .hero-subheading { font-family: $font-english-body; }
+
+@include respond-to(md) {
+  .hero-subheading { margin-inline: auto; }
+}
+
+// --- CTAs ---
+.hero-ctas {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-block-end: 3rem;
+
+  @include respond-to(xs) {
+    flex-direction: column;
+    .btn { width: 100%; justify-content: center; }
+  }
+}
+
+// --- Stats ---
+.hero-stats {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  border-block-start: 1px solid rgba($pure-white, 0.12);
+  padding-block-start: 2rem;
+
+  @include respond-to(xs) { gap: 1rem; }
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.stat-number {
+  font-family: $font-mono;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
+  color: $pure-white;
+  line-height: 1;
+}
+
+.stat-label {
+  font-family: $font-arabic-body;
+  font-size: 0.8125rem;
+  color: rgba($pure-white, 0.6);
+  white-space: nowrap;
+}
+
+body.lang-en .stat-label { font-family: $font-english-body; }
+
+.stat-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba($pure-white, 0.2);
+  flex-shrink: 0;
+}
+
+// --- Visual ---
+.hero-visual {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include respond-to(md) { display: none; }
+}
+
+.visual-composition {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+}
+
+.logo-watermark {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.building-svg {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 20px 60px rgba($darkest-navy, 0.5));
+}
+
+// Corner brackets on visual
+.bracket {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+
+  &-tl {
+    top: 0;
+    inset-inline-start: 0;
+    border-top: 1.5px solid rgba($accent-gold, 0.5);
+    border-inline-start: 1.5px solid rgba($accent-gold, 0.5);
+  }
+  &-br {
+    bottom: 0;
+    inset-inline-end: 0;
+    border-bottom: 1.5px solid rgba($accent-gold, 0.5);
+    border-inline-end: 1.5px solid rgba($accent-gold, 0.5);
+  }
+}
+
+// --- Floating Badges ---
+.badge {
+  position: absolute;
+  background: rgba($pure-white, 0.1);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba($pure-white, 0.2);
+  border-radius: $radius-sm;
+  padding: 0.75rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  box-shadow: 0 8px 32px rgba($darkest-navy, 0.3);
+
+  &-top {
+    top: 8%;
+    inset-inline-end: -5%;
+    animation: float 4s ease-in-out 1s infinite;
+  }
+  &-bottom {
+    bottom: 12%;
+    inset-inline-start: -5%;
+    animation: float 4s ease-in-out 2s infinite;
+  }
+
+  .badge-year, .badge-num {
+    font-family: $font-mono;
+    font-size: 1.375rem;
+    font-weight: 700;
+    color: $pure-white;
+    line-height: 1;
+  }
+  .badge-label {
+    font-family: $font-arabic-body;
+    font-size: 0.75rem;
+    color: rgba($pure-white, 0.7);
+  }
+}
+
+body.lang-en .badge .badge-label { font-family: $font-english-body; }
+
+// --- Scroll indicator ---
+.scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  animation: fadeIn 800ms $ease-standard 1400ms both;
+
+  @include respond-to(sm) { display: none; }
+
+  .scroll-num {
+    font-family: $font-mono;
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    color: rgba($pure-white, 0.4);
+  }
+
+  .scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, rgba($pure-white, 0.4), transparent);
+    animation: drawLine 1.5s ease-in-out infinite;
+  }
+}

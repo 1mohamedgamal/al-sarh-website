@@ -1,0 +1,77 @@
+// ============================================================
+// AL SARH — TYPOGRAPHY SYSTEM
+// ============================================================
+@use 'variables' as *;
+
+// Arabic display (hero only)
+.display-xl {
+  font-family: $font-arabic;
+  font-size: clamp(3rem, 7vw, 6.5rem);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+}
+
+// H1 — section headlines
+.heading-1 {
+  font-family: $font-arabic;
+  font-size: clamp(2.25rem, 4.5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+// H2 — sub-section headlines
+.heading-2 {
+  font-family: $font-arabic;
+  font-size: clamp(1.75rem, 3vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+// H3 — card titles
+.heading-3 {
+  font-family: $font-arabic;
+  font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+// Body Large
+.body-lg {
+  font-family: $font-arabic-body;
+  font-size: clamp(1.0625rem, 1.2vw, 1.25rem);
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+// Body
+.body {
+  font-family: $font-arabic-body;
+  font-size: 1rem;
+  line-height: 1.8;
+  font-weight: 400;
+}
+
+// Eyebrow
+.eyebrow-text {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+}
+
+// Numbers (stats)
+.stat-number {
+  font-family: $font-mono;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: 'tnum';
+}
+
+// English overrides
+:lang(en) {
+  .display-xl { font-family: $font-english; }
+  .heading-1, .heading-2, .heading-3 { font-family: $font-english; }
+  .body-lg, .body { font-family: $font-english-body; }
+}

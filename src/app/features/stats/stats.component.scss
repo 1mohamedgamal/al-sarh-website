@@ -1,0 +1,119 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.stats {
+  position: relative;
+  background: $primary-blue;
+  padding-block: clamp(5rem, 10vw, 8rem);
+  clip-path: polygon(0 6%, 100% 0, 100% 94%, 0 100%);
+  margin-block: -3rem;
+  z-index: 2;
+  overflow: hidden;
+
+  @include respond-to(sm) {
+    clip-path: polygon(0 3%, 100% 0, 100% 97%, 0 100%);
+  }
+}
+
+.blueprint-grid {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(to right, rgba($pure-white, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba($pure-white, 0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+.radial-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(lighten($primary-blue, 10%), 0.4) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.stats-grid {
+  @include container;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  position: relative;
+  z-index: 1;
+
+  @include respond-to(md) { grid-template-columns: repeat(2, 1fr); }
+  @include respond-to(xs) { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.75rem;
+  padding: 1.5rem;
+  position: relative;
+
+  & + & {
+    &::before {
+      content: '';
+      position: absolute;
+      inset-inline-start: 0;
+      top: 25%;
+      height: 50%;
+      width: 1px;
+      background: rgba($pure-white, 0.15);
+
+      @include respond-to(md) { display: none; }
+    }
+  }
+}
+
+.stat-number-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 0.1em;
+  cursor: default;
+}
+
+.stat-prefix, .stat-suffix {
+  font-family: $font-mono;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 700;
+  color: $accent-gold;
+  line-height: 1;
+}
+
+app-animated-counter {
+  font-family: $font-mono;
+  font-size: clamp(2.5rem, 5vw, 4.5rem);
+  font-weight: 700;
+  color: $pure-white;
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.gold-bar-anim {
+  width: 40px;
+  height: 3px;
+  background: $accent-gold;
+  animation: drawGoldBar 1.5s ease-out both;
+  animation-play-state: paused;
+
+  @keyframes drawGoldBar {
+    from { width: 0; opacity: 0; }
+    to { width: 40px; opacity: 1; }
+  }
+}
+
+.stat-label {
+  font-family: $font-arabic-body;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba($pure-white, 0.65);
+  line-height: 1.4;
+  text-align: center;
+}
+
+body.lang-en .stat-label { font-family: $font-english-body; }

@@ -1,0 +1,55 @@
+// ============================================================
+// AL SARH — ROOT COMPONENT STYLES
+// ============================================================
+@use '../styles/variables' as *;
+@use '../styles/mixins' as *;
+
+:host {
+  display: block;
+}
+
+// ============================================================
+// WhatsApp Floating Button
+// ============================================================
+.whatsapp-float {
+  position: fixed;
+  bottom: clamp(1.25rem, 3vw, 2rem);
+  inset-inline-start: clamp(1.25rem, 3vw, 2rem);
+  z-index: $z-sticky;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #25d366;
+  color: $pure-white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 24px rgba(#25d366, 0.45);
+  text-decoration: none;
+  position: fixed;
+  bottom: clamp(1.25rem, 3vw, 2rem);
+  inset-inline-start: clamp(1.25rem, 3vw, 2rem);
+  transition: transform $transition-fast, box-shadow $transition-fast;
+  @include focus-ring(#25d366);
+
+  @include respond-to(sm) {
+    width: 52px;
+    height: 52px;
+    bottom: calc(clamp(1rem, 2vw, 1.5rem) + env(safe-area-inset-bottom, 0px));
+    svg { width: 24px; height: 24px; }
+  }
+
+  &:hover {
+    transform: scale(1.08);
+    box-shadow: 0 12px 32px rgba(#25d366, 0.55);
+  }
+}
+
+.pulse-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #25d366;
+  animation: pulse-ring 2s ease-out infinite;
+  z-index: -1;
+}

@@ -1,0 +1,64 @@
+@use '../../../../styles/variables' as *;
+
+:host { display: block; }
+
+.section-heading {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &.center {
+    align-items: center;
+    text-align: center;
+    .sh-eyebrow { justify-content: center; }
+    .sh-subheading { text-align: center; }
+  }
+
+  &.on-dark {
+    .sh-eyebrow-text { color: $accent-gold; }
+    .sh-heading { color: $pure-white; }
+    .sh-subheading { color: rgba($pure-white, 0.7); }
+    .sh-eyebrow-line { background: $accent-gold; }
+  }
+}
+
+.sh-eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.sh-eyebrow-line {
+  display: inline-block;
+  width: 32px;
+  height: 2px;
+  background: $accent-gold;
+  flex-shrink: 0;
+}
+
+.sh-eyebrow-text {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $primary-blue;
+}
+
+.sh-heading {
+  font-family: $font-arabic;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  color: $text-primary;
+  letter-spacing: -0.02em;
+}
+
+:host-context(body.lang-en) .sh-heading { font-family: $font-english; }
+
+.sh-subheading {
+  font-size: clamp(1rem, 1.2vw, 1.2rem);
+  line-height: 1.8;
+  color: $text-secondary;
+  max-width: 55ch;
+}

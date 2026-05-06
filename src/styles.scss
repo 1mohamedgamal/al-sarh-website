@@ -1,0 +1,192 @@
+// ============================================================
+// AL SARH — GLOBAL STYLES ENTRY POINT
+// ============================================================
+@use 'styles/variables' as *;
+@use 'styles/mixins' as *;
+@use 'styles/typography';
+@use 'styles/animations';
+@use 'styles/utilities';
+
+// Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&family=Tajawal:wght@300;400;500;700;900&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+// ============================================================
+// CSS Reset & Base
+// ============================================================
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: $primary-blue transparent;
+
+  &::-webkit-scrollbar { width: 8px; }
+  &::-webkit-scrollbar-track { background: transparent; }
+  &::-webkit-scrollbar-thumb {
+    background: $primary-blue;
+    border-radius: 4px;
+  }
+}
+
+body {
+  font-family: $font-arabic-body;
+  color: $text-primary;
+  background-color: $pure-white;
+  line-height: 1.8;
+  direction: rtl;
+  text-align: right;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+
+  &.lang-en {
+    direction: ltr;
+    text-align: left;
+    font-family: $font-english-body;
+
+    h1, h2, h3, h4, h5, h6 { font-family: $font-english; }
+  }
+}
+
+::selection {
+  background: $primary-blue;
+  color: $pure-white;
+}
+
+:focus-visible {
+  outline: 2px solid $primary-blue;
+  outline-offset: 4px;
+}
+:focus:not(:focus-visible) { outline: none; }
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul, ol { list-style: none; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $font-arabic;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+// ============================================================
+// Print Styles
+// ============================================================
+@media print {
+  app-header, app-footer, .whatsapp-float { display: none !important; }
+  body { color: #000; background: #fff; }
+  * { box-shadow: none !important; }
+}
+
+// ============================================================
+// Skip Link
+// ============================================================
+.skip-link {
+  position: fixed;
+  top: -100%;
+  inset-inline-start: 1rem;
+  z-index: 9999;
+  background: $primary-blue;
+  color: $pure-white;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  border-radius: $radius-sm;
+  &:focus { top: 1rem; }
+}
+
+// ============================================================
+// Shared Button Styles
+// ============================================================
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 2rem;
+  font-family: $font-arabic;
+  font-size: 1rem;
+  font-weight: 700;
+  border: none;
+  cursor: pointer;
+  border-radius: $radius-sm;
+  transition: all $transition-fast;
+  text-decoration: none;
+  white-space: nowrap;
+
+  &:focus-visible {
+    outline: 2px solid $accent-gold;
+    outline-offset: 4px;
+  }
+
+  &-primary {
+    background: $accent-gold;
+    color: $dark-charcoal;
+    &:hover {
+      background: darken($accent-gold, 8%);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba($accent-gold, 0.4);
+    }
+  }
+
+  &-outline-white {
+    background: transparent;
+    color: $pure-white;
+    border: 1.5px solid rgba($pure-white, 0.5);
+    &:hover {
+      border-color: $pure-white;
+      background: rgba($pure-white, 0.1);
+    }
+  }
+
+  &-outline-blue {
+    background: transparent;
+    color: $primary-blue;
+    border: 1.5px solid $primary-blue;
+    &:hover {
+      background: $primary-blue;
+      color: $pure-white;
+    }
+  }
+
+  &-blue {
+    background: $primary-blue;
+    color: $pure-white;
+    &:hover {
+      background: darken($primary-blue, 8%);
+      transform: translateY(-2px);
+    }
+  }
+}
+
+body.lang-en .btn { font-family: $font-english; }
+
+// ============================================================
+// Modal
+// ============================================================
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(#0d1330, 0.88);
+  z-index: 999;
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: fadeIn 200ms ease both;
+}

@@ -1,0 +1,124 @@
+// ============================================================
+// AL SARH — ANIMATIONS
+// ============================================================
+@use 'variables' as *;
+
+// --- Reveal on Scroll ---
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 600ms $ease-standard, transform 600ms $ease-standard;
+
+  &.revealed {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.reveal-left {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity 600ms $ease-standard, transform 600ms $ease-standard;
+  &.revealed { opacity: 1; transform: translateX(0); }
+}
+
+.reveal-right {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity 600ms $ease-standard, transform 600ms $ease-standard;
+  &.revealed { opacity: 1; transform: translateX(0); }
+}
+
+// Stagger delays
+@for $i from 1 through 8 {
+  .reveal-delay-#{$i} {
+    transition-delay: #{$i * 100}ms;
+  }
+}
+
+// --- Hero entrance animations ---
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fadeInScale {
+  from { opacity: 0; transform: scale(0.95); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-8px); }
+}
+
+@keyframes pulse-ring {
+  0%   { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes drawLine {
+  from { height: 0; }
+  to   { height: 40px; }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0) rotate(-180deg); opacity: 0; }
+  to   { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+// --- Hero entry (staggered) ---
+.hero-animate-1 { animation: fadeIn 600ms $ease-standard 0ms both; }
+.hero-animate-2 { animation: fadeInUp 600ms $ease-standard 200ms both; }
+.hero-animate-3 { animation: fadeInUp 600ms $ease-standard 400ms both; }
+.hero-animate-4 { animation: fadeInUp 600ms $ease-standard 600ms both; }
+.hero-animate-5 { animation: fadeInUp 600ms $ease-standard 800ms both; }
+.hero-animate-6 { animation: fadeInScale 600ms $ease-standard 1000ms both; }
+.hero-animate-7 { animation: fadeInUp 600ms $ease-standard 1200ms both; }
+
+// --- Floating ---
+.float-animation {
+  animation: float 4s ease-in-out infinite;
+}
+
+// --- Skeleton shimmer ---
+.skeleton {
+  background: linear-gradient(90deg, #e8edf5 25%, #d0d8ef 50%, #e8edf5 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+// --- Reduced motion ---
+@media (prefers-reduced-motion: reduce) {
+  .reveal, .reveal-left, .reveal-right {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .hero-animate-1, .hero-animate-2, .hero-animate-3,
+  .hero-animate-4, .hero-animate-5, .hero-animate-6, .hero-animate-7 {
+    animation: none;
+    opacity: 1;
+  }
+  .float-animation { animation: none; }
+}

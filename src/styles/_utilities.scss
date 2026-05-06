@@ -1,0 +1,103 @@
+// ============================================================
+// AL SARH — UTILITY CLASSES
+// ============================================================
+@use 'variables' as *;
+
+// --- Colors ---
+.text-blue { color: $primary-blue; }
+.text-gold { color: $accent-gold; }
+.text-white { color: $pure-white; }
+.text-dark { color: $text-primary; }
+.text-muted { color: $text-muted; }
+.bg-blue { background-color: $primary-blue; }
+.bg-dark-navy { background-color: $dark-navy; }
+.bg-light { background-color: $bg-light; }
+
+// --- Spacing ---
+.mt-auto { margin-block-start: auto; }
+.section-gap { padding-block: $section-padding-y; }
+.section-gap-tight { padding-block: $section-padding-y-tight; }
+
+// --- Display ---
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-between { justify-content: space-between; }
+.gap-1 { gap: 0.5rem; }
+.gap-2 { gap: 1rem; }
+.gap-3 { gap: 1.5rem; }
+.gap-4 { gap: 2rem; }
+
+// --- Visibility ---
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+// --- Gold accent bar ---
+.gold-bar {
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: $accent-gold;
+}
+
+// --- Section marker ---
+.section-marker {
+  position: absolute;
+  inset-inline-start: clamp(0.5rem, 2vw, 2rem);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.35;
+  pointer-events: none;
+
+  .marker-number {
+    font-family: $font-mono;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: $muted-blue;
+    letter-spacing: 0.1em;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+
+  .marker-line {
+    width: 1px;
+    height: 60px;
+    background: $muted-blue;
+  }
+}
+
+// --- Container ---
+.container {
+  max-width: $container-max;
+  margin-inline: auto;
+  padding-inline: $container-padding;
+  width: 100%;
+}
+
+// --- Grid ---
+.grid-12 {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: $grid-gap;
+}
+
+// --- Responsive helpers ---
+.hide-mobile {
+  @media (max-width: #{$bp-sm}) { display: none !important; }
+}
+.hide-desktop {
+  @media (min-width: #{$bp-sm}) { display: none !important; }
+}

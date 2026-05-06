@@ -1,0 +1,68 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.clients {
+  background: $pure-white;
+  border-block: 1px solid $border-subtle;
+}
+
+.clients-eyebrow {
+  @include eyebrow;
+  justify-content: center;
+  margin-block-end: 2.5rem;
+  color: $text-muted;
+  &::before { background: $border-subtle; }
+}
+
+.marquee-container {
+  overflow: hidden;
+  mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+}
+
+.marquee-track {
+  display: flex;
+  gap: 2rem;
+  animation: marquee 30s linear infinite;
+  width: max-content;
+}
+
+.client-item {
+  display: flex;
+  align-items: center;
+  gap: 0.875rem;
+  padding: 1.25rem 2rem;
+  border: 1px solid $border-subtle;
+  border-radius: $radius-sm;
+  background: $pure-white;
+  filter: grayscale(1);
+  opacity: 0.6;
+  transition: filter $transition-med, opacity $transition-med;
+  cursor: default;
+  white-space: nowrap;
+
+  &:hover {
+    filter: grayscale(0);
+    opacity: 1;
+  }
+}
+
+.client-abbr {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: $primary-blue;
+  background: rgba($primary-blue, 0.08);
+  padding: 0.25rem 0.5rem;
+  border-radius: 2px;
+  letter-spacing: 0.08em;
+}
+
+.client-name {
+  font-family: $font-arabic;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: $text-secondary;
+}
+
+body.lang-en .client-name { font-family: $font-english; }

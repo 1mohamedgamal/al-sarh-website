@@ -1,0 +1,173 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.services {
+  background: linear-gradient(180deg, $bg-light 0%, $pure-white 100%);
+  position: relative;
+}
+
+.section-marker-wrap {
+  position: absolute;
+  inset-inline-start: clamp(0.75rem, 2vw, 2.5rem);
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  opacity: 0.3;
+  @include respond-to(md) { display: none; }
+
+  .marker-line { width: 1px; height: 60px; background: $muted-blue; }
+  .marker-num {
+    font-family: $font-mono;
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: $muted-blue;
+    letter-spacing: 0.1em;
+    writing-mode: vertical-rl;
+  }
+}
+
+.services-header {
+  display: grid;
+  grid-template-columns: 7fr 5fr;
+  gap: clamp(2rem, 4vw, 4rem);
+  align-items: end;
+  margin-block-end: clamp(3rem, 5vw, 4rem);
+
+  @include respond-to(md) { grid-template-columns: 1fr; gap: 1.5rem; }
+}
+
+.services-subtitle {
+  font-family: $font-arabic-body;
+  font-size: clamp(0.9375rem, 1.1vw, 1.1rem);
+  line-height: 1.8;
+  color: $text-secondary;
+}
+
+body.lang-en .services-subtitle { font-family: $font-english-body; }
+
+// --- Cards Grid ---
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5px;
+  background: $border-subtle;
+  border: 1px solid $border-subtle;
+
+  @include respond-to(md) { grid-template-columns: repeat(2, 1fr); }
+  @include respond-to(sm) { grid-template-columns: 1fr; }
+}
+
+.service-card {
+  background: $pure-white;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+  cursor: default;
+  transition: transform $transition-med, box-shadow $transition-med;
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  min-height: 260px;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: $shadow-strong;
+    z-index: 2;
+
+    .service-icon {
+      background: $primary-blue;
+      color: $pure-white;
+    }
+
+    .gold-slide {
+      transform: scaleX(1);
+    }
+
+    .card-arrow {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.service-icon {
+  width: 52px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($primary-blue, 0.06);
+  color: $primary-blue;
+  border-radius: $radius-sm;
+  transition: background $transition-med, color $transition-med;
+  flex-shrink: 0;
+}
+
+.service-num {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: $text-muted;
+}
+
+.service-title {
+  font-family: $font-arabic;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: $text-primary;
+  line-height: 1.4;
+}
+
+body.lang-en .service-title { font-family: $font-english; }
+
+.service-desc {
+  font-family: $font-arabic-body;
+  font-size: 0.9rem;
+  line-height: 1.75;
+  color: $text-secondary;
+  flex: 1;
+}
+
+body.lang-en .service-desc { font-family: $font-english-body; }
+
+.card-arrow {
+  opacity: 0;
+  transform: translateX(6px);
+  transition: opacity $transition-fast, transform $transition-fast;
+  color: $primary-blue;
+  margin-block-start: auto;
+  align-self: flex-end;
+}
+
+:host-context(body.lang-en) .card-arrow {
+  transform: translateX(-6px) scaleX(-1);
+}
+
+.gold-slide {
+  position: absolute;
+  bottom: 0;
+  inset-inline-start: 0;
+  width: 100%;
+  height: 3px;
+  background: $accent-gold;
+  transform: scaleX(0);
+  transform-origin: inset-inline-end 0;
+  transition: transform $transition-med;
+}
+
+:host-context([dir="rtl"]) .gold-slide {
+  transform-origin: right 0;
+}
+:host-context([dir="ltr"]) .gold-slide {
+  transform-origin: left 0;
+}

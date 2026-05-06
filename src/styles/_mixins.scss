@@ -1,0 +1,165 @@
+// ============================================================
+// AL SARH — SCSS MIXINS
+// ============================================================
+@use 'variables' as *;
+
+// --- Responsive ---
+@mixin respond-to($bp) {
+  @if $bp == xs { @media (max-width: #{$bp-xs}) { @content; } }
+  @else if $bp == sm { @media (max-width: #{$bp-sm}) { @content; } }
+  @else if $bp == md { @media (max-width: #{$bp-md}) { @content; } }
+  @else if $bp == lg { @media (max-width: #{$bp-lg}) { @content; } }
+  @else if $bp == xl { @media (min-width: #{$bp-xl}) { @content; } }
+  @else if $bp == sm-up { @media (min-width: #{$bp-sm}) { @content; } }
+  @else if $bp == md-up { @media (min-width: #{$bp-md}) { @content; } }
+}
+
+// --- Container ---
+@mixin container {
+  max-width: $container-max;
+  margin-inline: auto;
+  padding-inline: $container-padding;
+  width: 100%;
+}
+
+// --- Blueprint Grid Overlay ---
+@mixin blueprint-grid($opacity: 0.04, $color: $pure-white, $size: 40px) {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgba($color, $opacity) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba($color, $opacity) 1px, transparent 1px);
+    background-size: $size $size;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+// --- Blueprint Grid (dark version) ---
+@mixin blueprint-grid-blue($opacity: 0.04, $size: 40px) {
+  position: relative;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(to right, rgba($primary-blue, $opacity) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba($primary-blue, $opacity) 1px, transparent 1px);
+    background-size: $size $size;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+// --- Diagonal Cut Bottom ---
+@mixin diagonal-cut-bottom($angle: -6deg, $bg: $pure-white) {
+  clip-path: polygon(0 0, 100% 0, 100% 92%, 0 100%);
+  @include respond-to(sm) {
+    clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+  }
+}
+
+// --- Diagonal Cut Top ---
+@mixin diagonal-cut-top($bg: $primary-blue) {
+  clip-path: polygon(0 8%, 100% 0, 100% 100%, 0 100%);
+  @include respond-to(sm) {
+    clip-path: polygon(0 5%, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+// --- Corner Brackets ---
+@mixin corner-brackets($size: 16px, $color: $primary-blue, $thickness: 1px) {
+  position: relative;
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: $size;
+    height: $size;
+  }
+  &::before {
+    top: 0;
+    inset-inline-start: 0;
+    border-top: $thickness solid $color;
+    border-inline-start: $thickness solid $color;
+  }
+  &::after {
+    bottom: 0;
+    inset-inline-end: 0;
+    border-bottom: $thickness solid $color;
+    border-inline-end: $thickness solid $color;
+  }
+}
+
+// --- Section Marker (vertical number) ---
+@mixin section-marker($number, $color: rgba($muted-blue, 0.4)) {
+  // Applied via pseudo-elements or a child element
+}
+
+// --- Flex Center ---
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+// --- Text Truncate ---
+@mixin truncate($lines: 2) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+// --- Hover Lift ---
+@mixin hover-lift($y: -4px) {
+  transition: transform $transition-med, box-shadow $transition-med;
+  &:hover {
+    transform: translateY($y);
+    box-shadow: $shadow-strong;
+  }
+}
+
+// --- Focus Visible Ring ---
+@mixin focus-ring($color: $primary-blue) {
+  &:focus-visible {
+    outline: 2px solid $color;
+    outline-offset: 4px;
+  }
+  &:focus:not(:focus-visible) {
+    outline: none;
+  }
+}
+
+// --- Eyebrow Label ---
+@mixin eyebrow {
+  font-family: $font-mono;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: $primary-blue;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 32px;
+    height: 2px;
+    background: $accent-gold;
+    flex-shrink: 0;
+  }
+}
+
+// --- Gold Accent Line ---
+@mixin gold-line($width: 40px) {
+  display: block;
+  width: $width;
+  height: 3px;
+  background: $accent-gold;
+  margin-block-start: 1rem;
+}
