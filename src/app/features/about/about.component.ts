@@ -31,27 +31,27 @@ interface Pillar {
           <!-- Visual collage -->
           <div class="about-visual" appReveal="right" [revealDelay]="0" [revealBlur]="true">
             <div class="img-card img-card-1">
-              <img src="assets/projects/capital/4.jpeg"
-                   [alt]="lang.t('العاصمة الإدارية الجديدة', 'New Administrative Capital')"
+              <img src="assets/stock/workers-team.jpg"
+                   [alt]="lang.t('موقع بناء - رافعات عند الغروب', 'Construction site at sunset')"
                    loading="lazy" class="collage-img">
               <div class="img-shade" aria-hidden="true"></div>
-              <span class="img-label">{{ lang.t('العاصمة الإدارية', 'New Capital') }}</span>
+              <span class="img-label">{{ lang.t('مشاريعنا', 'Our Projects') }}</span>
               <div class="bracket-tl"></div>
             </div>
             <div class="img-card img-card-2">
-              <img src="assets/projects/hospital/3.jpeg"
-                   [alt]="lang.t('مستشفى حياة كريمة', 'Hayah Karima Hospital')"
+              <img src="assets/hero/cranes.jpg"
+                   [alt]="lang.t('إنشاء ناطحات سحاب', 'High-rise construction')"
                    loading="lazy" class="collage-img">
               <div class="img-shade" aria-hidden="true"></div>
-              <span class="img-label">{{ lang.t('مشاريع حياة كريمة', 'Hayah Karima') }}</span>
+              <span class="img-label">{{ lang.t('جودة التنفيذ', 'Quality Execution') }}</span>
               <div class="bracket-br"></div>
             </div>
             <div class="img-card img-card-3">
-              <img src="assets/projects/market/2.jpeg"
-                   [alt]="lang.t('السوق التجاري - 15 مايو', 'Commercial Market - 15 May')"
+              <img src="assets/hero/workers-aerial.jpg"
+                   [alt]="lang.t('فريق العمل على الموقع', 'Team at work on site')"
                    loading="lazy" class="collage-img">
               <div class="img-shade" aria-hidden="true"></div>
-              <span class="img-label">{{ lang.t('15 مايو', '15 May City') }}</span>
+              <span class="img-label">{{ lang.t('فريق متخصص', 'Specialist Team') }}</span>
             </div>
             <!-- Year badge -->
             <div class="year-badge" aria-hidden="true">
