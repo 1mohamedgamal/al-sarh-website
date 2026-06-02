@@ -91,65 +91,43 @@ import { AnimatedCounterComponent } from '../../shared/components/animated-count
           </div>
         </div>
 
-        <!-- Hero Visual -->
-        <div class="hero-visual hero-animate-6" aria-hidden="true">
+        <!-- Hero Visual — Photo Mosaic -->
+        <div class="hero-visual hero-animate-6">
           <div class="visual-composition float-animation">
-            <!-- Background logo watermark -->
-            <div class="logo-watermark">
-              <svg width="100%" height="100%" viewBox="0 0 100 100" fill="none">
-                <rect x="60" y="10" width="12" height="80" fill="white" opacity="0.06"/>
-                <rect x="75" y="10" width="12" height="80" fill="white" opacity="0.06"/>
-                <rect x="10" y="10" width="45" height="12" fill="white" opacity="0.06"/>
-                <rect x="10" y="28" width="30" height="10" fill="white" opacity="0.06"/>
-                <rect x="10" y="44" width="45" height="12" fill="white" opacity="0.06"/>
-                <rect x="25" y="62" width="30" height="10" fill="white" opacity="0.06"/>
-                <rect x="10" y="78" width="45" height="12" fill="white" opacity="0.06"/>
-              </svg>
+
+            <div class="photo-mosaic" aria-hidden="true">
+
+              <!-- Main slot: CSS slideshow cycling through 3 construction site images -->
+              <div class="mosaic-col-main">
+                <img class="mosaic-img slide s1"
+                     src="assets/hero/cranes.jpg"
+                     alt="">
+                <img class="mosaic-img slide s2"
+                     src="assets/hero/excavator.jpg"
+                     alt="">
+                <img class="mosaic-img slide s3"
+                     src="assets/hero/workers-aerial.jpg"
+                     alt="">
+              </div>
+
+              <!-- Side slots: static with slow Ken Burns zoom -->
+              <div class="mosaic-col-side">
+                <img class="mosaic-img side-top"
+                     src="assets/hero/workers-plans.jpg"
+                     alt="">
+                <img class="mosaic-img side-bottom"
+                     src="assets/hero/concrete-work.jpg"
+                     alt="">
+              </div>
+
+              <!-- Dark overlay & vignette -->
+              <div class="mosaic-overlay"></div>
+
+              <!-- Corner brackets -->
+              <div class="bracket bracket-tl"></div>
+              <div class="bracket bracket-br"></div>
             </div>
 
-            <!-- Geometric Building Composition -->
-            <svg class="building-svg" viewBox="0 0 480 520" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Ground -->
-              <rect x="0" y="480" width="480" height="8" fill="rgba(255,255,255,0.15)" rx="2"/>
-              <!-- Main Tower -->
-              <rect x="160" y="120" width="160" height="360" fill="rgba(255,255,255,0.12)" rx="2"/>
-              <rect x="168" y="128" width="60" height="50" fill="rgba(245,184,0,0.25)" rx="1"/>
-              <rect x="252" y="128" width="60" height="50" fill="rgba(245,184,0,0.25)" rx="1"/>
-              <rect x="168" y="196" width="60" height="50" fill="rgba(255,255,255,0.1)" rx="1"/>
-              <rect x="252" y="196" width="60" height="50" fill="rgba(255,255,255,0.1)" rx="1"/>
-              <rect x="168" y="264" width="60" height="50" fill="rgba(255,255,255,0.1)" rx="1"/>
-              <rect x="252" y="264" width="60" height="50" fill="rgba(255,255,255,0.1)" rx="1"/>
-              <rect x="168" y="332" width="60" height="50" fill="rgba(255,255,255,0.1)" rx="1"/>
-              <rect x="252" y="332" width="60" height="50" fill="rgba(255,255,255,0.1)" rx="1"/>
-              <!-- Crown -->
-              <rect x="180" y="60" width="120" height="60" fill="rgba(255,255,255,0.18)" rx="2"/>
-              <rect x="210" y="20" width="60" height="40" fill="rgba(245,184,0,0.35)" rx="2"/>
-              <!-- Left Wing -->
-              <rect x="60" y="240" width="100" height="240" fill="rgba(255,255,255,0.08)" rx="2"/>
-              <rect x="68" y="248" width="36" height="36" fill="rgba(255,255,255,0.08)" rx="1"/>
-              <rect x="116" y="248" width="36" height="36" fill="rgba(255,255,255,0.08)" rx="1"/>
-              <rect x="68" y="296" width="36" height="36" fill="rgba(255,255,255,0.08)" rx="1"/>
-              <rect x="116" y="296" width="36" height="36" fill="rgba(255,255,255,0.08)" rx="1"/>
-              <!-- Right Wing -->
-              <rect x="320" y="280" width="100" height="200" fill="rgba(255,255,255,0.08)" rx="2"/>
-              <rect x="328" y="288" width="36" height="36" fill="rgba(255,255,255,0.08)" rx="1"/>
-              <rect x="376" y="288" width="36" height="36" fill="rgba(255,255,255,0.08)" rx="1"/>
-              <rect x="328" y="336" width="36" height="36" fill="rgba(255,255,255,0.08)" rx="1"/>
-              <rect x="376" y="336" width="36" height="36" fill="rgba(255,255,255,0.08)" rx="1"/>
-              <!-- Grid lines on main tower -->
-              <line x1="240" y1="120" x2="240" y2="480" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-              <line x1="160" y1="196" x2="320" y2="196" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-              <line x1="160" y1="264" x2="320" y2="264" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-              <line x1="160" y1="332" x2="320" y2="332" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-              <line x1="160" y1="400" x2="320" y2="400" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
-              <!-- Gold accent lines -->
-              <line x1="160" y1="118" x2="320" y2="118" stroke="#f5b800" stroke-width="2" opacity="0.7"/>
-              <line x1="180" y1="58" x2="300" y2="58" stroke="#f5b800" stroke-width="2" opacity="0.7"/>
-            </svg>
-
-            <!-- Corner brackets -->
-            <div class="bracket bracket-tl" aria-hidden="true"></div>
-            <div class="bracket bracket-br" aria-hidden="true"></div>
           </div>
 
           <!-- Floating badges -->
