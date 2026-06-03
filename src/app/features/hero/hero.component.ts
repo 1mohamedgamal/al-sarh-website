@@ -100,23 +100,23 @@ import { AnimatedCounterComponent } from '../../shared/components/animated-count
               <!-- Main slot: CSS slideshow cycling through 3 construction site images -->
               <div class="mosaic-col-main">
                 <img class="mosaic-img slide s1"
-                     src="assets/hero/cranes.jpg"
+                     src="assets/projects/capital/10.jpeg"
                      alt="">
                 <img class="mosaic-img slide s2"
-                     src="assets/hero/excavator.jpg"
+                     src="assets/projects/faisal/1.jpeg"
                      alt="">
                 <img class="mosaic-img slide s3"
-                     src="assets/hero/workers-aerial.jpg"
+                     src="assets/projects/hospital/2.jpeg"
                      alt="">
               </div>
 
               <!-- Side slots: static with slow Ken Burns zoom -->
               <div class="mosaic-col-side">
                 <img class="mosaic-img side-top"
-                     src="assets/hero/workers-plans.jpg"
+                     src="assets/projects/may/1.jpeg"
                      alt="">
                 <img class="mosaic-img side-bottom"
-                     src="assets/hero/concrete-work.jpg"
+                     src="assets/projects/market/2.jpeg"
                      alt="">
               </div>
 

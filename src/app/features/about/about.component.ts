@@ -31,7 +31,7 @@ interface Pillar {
           <!-- Visual collage -->
           <div class="about-visual" appReveal="right" [revealDelay]="0" [revealBlur]="true">
             <div class="img-card img-card-1">
-              <img src="assets/stock/workers-team.jpg"
+              <img src="assets/projects/capital/10.jpeg"
                    [alt]="lang.t('موقع بناء - رافعات عند الغروب', 'Construction site at sunset')"
                    loading="lazy" class="collage-img">
               <div class="img-shade" aria-hidden="true"></div>
@@ -39,7 +39,7 @@ interface Pillar {
               <div class="bracket-tl"></div>
             </div>
             <div class="img-card img-card-2">
-              <img src="assets/hero/cranes.jpg"
+              <img src="assets/projects/hospital/2.jpeg"
                    [alt]="lang.t('إنشاء ناطحات سحاب', 'High-rise construction')"
                    loading="lazy" class="collage-img">
               <div class="img-shade" aria-hidden="true"></div>
@@ -47,7 +47,7 @@ interface Pillar {
               <div class="bracket-br"></div>
             </div>
             <div class="img-card img-card-3">
-              <img src="assets/hero/workers-aerial.jpg"
+              <img src="assets/projects/market/2.jpeg"
                    [alt]="lang.t('فريق العمل على الموقع', 'Team at work on site')"
                    loading="lazy" class="collage-img">
               <div class="img-shade" aria-hidden="true"></div>

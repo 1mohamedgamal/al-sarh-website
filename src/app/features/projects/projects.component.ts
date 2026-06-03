@@ -139,7 +139,7 @@ export class ProjectsComponent {
       client: 'الهيئة الهندسية للقوات المسلحة',
       description: 'تنفيذ الهيكل الخرساني وأعمال التشطيبات الكاملة لـ 18 فيلا سكنية فاخرة بأعلى مستوى من الجودة والدقة',
       scope: ['هيكل خرساني', 'تشطيبات داخلية', 'تشطيبات خارجية', 'توريدات'], icon: '🏡',
-      images: ['assets/stock/villa-1.jpg','assets/stock/villa-2.jpg','assets/stock/luxury-3.jpg','assets/stock/site-wide.jpg']
+      images: ['assets/projects/capital/10.jpeg','assets/projects/capital/9.jpeg','assets/projects/capital/8.jpeg','assets/projects/capital/5.jpeg']
     },
     {
       id: 2, titleAr: '9 فيلات سكنية - مشروع R6', titleEn: '9 Residential Villas - R6 Project',
@@ -147,7 +147,7 @@ export class ProjectsComponent {
       client: 'الهيئة الهندسية للقوات المسلحة',
       description: 'تنفيذ متكامل لـ 9 فيلات سكنية بأعلى معايير الجودة',
       scope: ['هيكل خرساني', 'تشطيبات'], icon: '🏘️',
-      images: ['assets/stock/villa-2.jpg','assets/stock/villa-1.jpg','assets/stock/site-steel.jpg']
+      images: ['assets/projects/capital/10.jpeg','assets/projects/capital/8.jpeg','assets/projects/capital/9.jpeg']
     },
     {
       id: 3, titleAr: '22 فيلا سكنية - مشروع R2', titleEn: '22 Residential Villas - R2 Project',
@@ -155,7 +155,7 @@ export class ProjectsComponent {
       client: 'الهيئة الهندسية للقوات المسلحة',
       description: 'أعمال تشطيبات احترافية لـ 22 فيلا سكنية',
       scope: ['تشطيبات داخلية وخارجية'], icon: '🏠',
-      images: ['assets/stock/luxury-3.jpg','assets/stock/villa-1.jpg','assets/stock/site-wide.jpg']
+      images: ['assets/projects/capital/10.jpeg','assets/projects/capital/9.jpeg','assets/projects/capital/8.jpeg']
     },
     {
       id: 4, titleAr: 'عمارتين سكنيتين - 12 دور', titleEn: '2 Residential Towers - 12 Floors',
@@ -163,7 +163,7 @@ export class ProjectsComponent {
       client: 'القطاع الخاص',
       description: 'إنشاء برجين سكنيين بأعمال حفر وخوازيق وهيكل خرساني وتشطيبات',
       scope: ['حفر وخوازيق', 'هيكل خرساني', 'تشطيبات كاملة'], icon: '🏢',
-      images: ['assets/stock/tower-2.jpg','assets/stock/housing-1.jpg','assets/stock/workers-team.jpg','assets/stock/tower-1.jpg']
+      images: ['assets/projects/faisal/1.jpeg','assets/projects/faisal/2.jpeg','assets/projects/faisal/3.jpeg','assets/projects/faisal/4.jpeg']
     },
     {
       id: 5, titleAr: 'فيلتين فاخرتين', titleEn: '2 Luxury Villas',
@@ -171,7 +171,7 @@ export class ProjectsComponent {
       client: 'القطاع الخاص',
       description: 'فيلتين فاخرتين (بدروم + أرضي + 3 أدوار) بتنفيذ متكامل',
       scope: ['حفر وخوازيق', 'هيكل خرساني', 'تشطيبات'], icon: '🏰',
-      images: ['assets/stock/villa-4.jpg','assets/stock/site-steel.jpg','assets/stock/luxury-1.jpg','assets/stock/villa-2.jpg']
+      images: ['assets/projects/tourism/1.jpeg','assets/projects/tourism/2.jpeg','assets/projects/tourism/3.jpeg','assets/projects/tourism/4.jpeg']
     },
     {
       id: 6, titleAr: '5 عمارات - 120 وحدة سكنية', titleEn: '5 Buildings - 120 Residential Units',
@@ -179,7 +179,7 @@ export class ProjectsComponent {
       client: 'هيئة المجتمعات العمرانية الجديدة',
       description: 'مشروع الإسكان الاجتماعي - 120 وحدة سكنية في 5 عمارات',
       scope: ['هيكل خرساني', 'تشطيبات', 'إسكان اجتماعي'], icon: '🏗️',
-      images: ['assets/stock/housing-1.jpg','assets/stock/tower-2.jpg','assets/stock/site-wide.jpg','assets/stock/luxury-3.jpg']
+      images: ['assets/projects/may/1.jpeg','assets/projects/may/2.jpeg','assets/projects/may/4.jpeg','assets/projects/may/5.jpeg']
     },
     {
       id: 7, titleAr: 'مستشفى حياة كريمة', titleEn: 'Hayah Karima Hospital',
