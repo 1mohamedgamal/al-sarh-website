@@ -219,12 +219,12 @@ body.lang-en .nav-link { font-family: $font-english; }
   inset-inline-end: 0;
   top: 0;
   bottom: 0;
-  width: min(360px, 90vw);
-  background: $primary-blue;
+  width: min(300px, 80vw);
+  background: darken($primary-blue, 5%);
+  border-inline-start: 1px solid rgba($pure-white, 0.12);
   z-index: $z-modal;
   overflow-y: auto;
-  animation: slideDown 300ms $ease-standard both;
-  box-shadow: -8px 0 40px rgba($darkest-navy, 0.4);
+  box-shadow: -12px 0 48px rgba($darkest-navy, 0.6);
 
   @keyframes slideInDrawer {
     from { transform: translateX(100%); opacity: 0; }
@@ -261,7 +261,25 @@ body.lang-en .nav-link { font-family: $font-english; }
     font-size: 1.5rem;
     font-weight: 900;
     color: $pure-white;
+    flex: 1;
   }
+}
+
+.drawer-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($pure-white, 0.1);
+  border: 1px solid rgba($pure-white, 0.2);
+  border-radius: $radius-sm;
+  color: $pure-white;
+  cursor: pointer;
+  padding: 0.4rem;
+  margin-inline-start: auto;
+  transition: background $transition-fast;
+  @include focus-ring($accent-gold);
+
+  &:hover { background: rgba($pure-white, 0.2); }
 }
 
 .drawer-link {

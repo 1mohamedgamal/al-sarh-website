@@ -66,39 +66,6 @@ interface NavItem {
         </div>
       </div>
 
-      <!-- Mobile Drawer -->
-      @if (menuOpen()) {
-        <div class="mobile-drawer" role="dialog" [attr.aria-label]="lang.t('قائمة التنقل', 'Navigation Menu')">
-          <div class="drawer-inner">
-            <div class="drawer-logo">
-              <img src="assets/icons/AS.png" alt="شركة الصرح" class="drawer-logo-img" width="56" height="56">
-              <span>{{ lang.t('الصرح', 'Al Sarh') }}</span>
-            </div>
-
-            <nav [attr.aria-label]="lang.t('قائمة الجوال', 'Mobile Navigation')">
-              <ul role="list">
-                @for (item of navItems; track item.section) {
-                  <li>
-                    <a class="drawer-link" href="#{{ item.section }}"
-                      (click)="navClick($event, item.section)">
-                      {{ lang.isArabic() ? item.labelAr : item.labelEn }}
-                    </a>
-                  </li>
-                }
-              </ul>
-            </nav>
-
-            <div class="drawer-bottom">
-              <button class="lang-toggle-drawer" (click)="lang.toggle()">
-                {{ lang.isArabic() ? 'English' : 'العربية' }}
-              </button>
-              <a href="#contact" class="btn btn-primary w-full" (click)="navClick($event, 'contact')">
-                {{ lang.t('تواصل معنا', 'Contact Us') }}
-              </a>
-            </div>
-          </div>
-        </div>
-      }
       <!-- Scroll progress indicator -->
       <div class="scroll-progress-bar"
            [style.width]="scrollProgress() + '%'"
@@ -108,6 +75,45 @@ interface NavItem {
     <!-- Backdrop for mobile menu -->
     @if (menuOpen()) {
       <div class="drawer-backdrop" (click)="closeMenu()" aria-hidden="true"></div>
+    }
+
+    <!-- Mobile Drawer (outside <header> so z-index stacking works correctly) -->
+    @if (menuOpen()) {
+      <div class="mobile-drawer" role="dialog" [attr.aria-label]="lang.t('قائمة التنقل', 'Navigation Menu')">
+        <div class="drawer-inner">
+          <div class="drawer-logo">
+            <img src="assets/icons/AS.png" alt="شركة الصرح" class="drawer-logo-img" width="56" height="56">
+            <span>{{ lang.t('الصرح', 'Al Sarh') }}</span>
+            <button class="drawer-close" (click)="closeMenu()" [attr.aria-label]="lang.t('إغلاق القائمة', 'Close Menu')">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M18 6L6 18M6 6l12 12"/>
+              </svg>
+            </button>
+          </div>
+
+          <nav [attr.aria-label]="lang.t('قائمة الجوال', 'Mobile Navigation')">
+            <ul role="list">
+              @for (item of navItems; track item.section) {
+                <li>
+                  <a class="drawer-link" href="#{{ item.section }}"
+                    (click)="navClick($event, item.section)">
+                    {{ lang.isArabic() ? item.labelAr : item.labelEn }}
+                  </a>
+                </li>
+              }
+            </ul>
+          </nav>
+
+          <div class="drawer-bottom">
+            <button class="lang-toggle-drawer" (click)="lang.toggle()">
+              {{ lang.isArabic() ? 'English' : 'العربية' }}
+            </button>
+            <a href="#contact" class="btn btn-primary w-full" (click)="navClick($event, 'contact')">
+              {{ lang.t('تواصل معنا', 'Contact Us') }}
+            </a>
+          </div>
+        </div>
+      </div>
     }
   `,
   styleUrl: './header.component.scss'
