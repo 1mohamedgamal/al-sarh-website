@@ -134,28 +134,28 @@ export class ProjectsComponent {
 
   allProjects: Project[] = [
     {
-      id: 1, titleAr: '18 فيلا سكنية - مشروع R2', titleEn: '18 Residential Villas - R2 Project',
+      id: 1, titleAr: '18 فيلا سكنية - مشروع R2 - مسندة من الهيئة الهندسية للقوات المسلحة', titleEn: '18 Residential Villas - R2 Project',
       location: 'العاصمة الإدارية الجديدة', year: '2017', category: 'سكني',
       client: 'الهيئة الهندسية للقوات المسلحة',
       description: 'تنفيذ الهيكل الخرساني وأعمال التشطيبات الكاملة لـ 18 فيلا سكنية فاخرة بأعلى مستوى من الجودة والدقة',
       scope: ['هيكل خرساني', 'تشطيبات داخلية', 'تشطيبات خارجية', 'توريدات'], icon: '🏡',
-      images: ['assets/projects/capital/10.jpeg','assets/projects/capital/9.jpeg','assets/projects/capital/8.jpeg','assets/projects/capital/5.jpeg']
+      images: ['assets/projects/capital/10.jpeg','assets/projects/capital/1.jpeg','assets/projects/capital/2.jpeg','assets/projects/capital/3.jpeg']
     },
     {
-      id: 2, titleAr: '9 فيلات سكنية - مشروع R6', titleEn: '9 Residential Villas - R6 Project',
+      id: 2, titleAr: '9 فيلات سكنية - مشروع R6 - مسندة من الهيئة الهندسية للقوات المسلحة', titleEn: '9 Residential Villas - R6 Project',
       location: 'العاصمة الإدارية الجديدة', year: '2018', category: 'سكني',
       client: 'الهيئة الهندسية للقوات المسلحة',
       description: 'تنفيذ متكامل لـ 9 فيلات سكنية بأعلى معايير الجودة',
       scope: ['هيكل خرساني', 'تشطيبات'], icon: '🏘️',
-      images: ['assets/projects/capital/10.jpeg','assets/projects/capital/8.jpeg','assets/projects/capital/9.jpeg']
+      images: ['assets/projects/capital/4.jpeg','assets/projects/capital/5.jpeg','assets/projects/capital/6.jpeg']
     },
     {
-      id: 3, titleAr: '22 فيلا سكنية - مشروع R2', titleEn: '22 Residential Villas - R2 Project',
+      id: 3, titleAr: '22 فيلا سكنية - مشروع R2 - مسندة من الهيئة الهندسية للقوات المسلحة', titleEn: '22 Residential Villas - R2 Project',
       location: 'العاصمة الإدارية الجديدة', year: '2019', category: 'سكني',
       client: 'الهيئة الهندسية للقوات المسلحة',
       description: 'أعمال تشطيبات احترافية لـ 22 فيلا سكنية',
       scope: ['تشطيبات داخلية وخارجية'], icon: '🏠',
-      images: ['assets/projects/capital/10.jpeg','assets/projects/capital/9.jpeg','assets/projects/capital/8.jpeg']
+      images: ['assets/projects/capital/7.jpeg','assets/projects/capital/8.jpeg','assets/projects/capital/9.jpeg']
     },
     {
       id: 4, titleAr: 'عمارتين سكنيتين - 12 دور', titleEn: '2 Residential Towers - 12 Floors',
@@ -174,7 +174,7 @@ export class ProjectsComponent {
       images: ['assets/projects/tourism/1.jpeg','assets/projects/tourism/2.jpeg','assets/projects/tourism/3.jpeg','assets/projects/tourism/4.jpeg']
     },
     {
-      id: 6, titleAr: '5 عمارات - 120 وحدة سكنية', titleEn: '5 Buildings - 120 Residential Units',
+      id: 6, titleAr: '5 عمارات - 120 وحدة سكنية - مسندة من هيئة المجتمعات العمرانية', titleEn: '5 Buildings - 120 Residential Units',
       location: 'منطقة النرجس - مدينة 15 مايو', year: '2021-2023', category: 'حكومي',
       client: 'هيئة المجتمعات العمرانية الجديدة',
       description: 'مشروع الإسكان الاجتماعي - 120 وحدة سكنية في 5 عمارات',
@@ -196,6 +196,30 @@ export class ProjectsComponent {
       description: 'إنشاء سوق تجاري متكامل بأعمال الهيكل الخرساني والتشطيبات',
       scope: ['هيكل خرساني', 'تشطيبات تجارية'], icon: '🏪',
       images: ['assets/projects/market/2.jpeg','assets/projects/market/3.jpeg','assets/projects/market/1.jpeg','assets/projects/market/4.jpeg']
+    },
+    {
+      id: 9, titleAr: 'مشروع مبنى سكني رقم A71 - منطقة النرجس الجديد التجمع الخامس', titleEn: 'Residential Building A71 - Al Narges New Settlement, Fifth District',
+      location: 'التجمع الخامس', year: '2024', category: 'سكني',
+      client: '',
+      description: 'تنفيذ مبنى سكني A71 في منطقة النرجس الجديد بالتجمع الخامس بأعلى معايير الجودة',
+      scope: ['هيكل خرساني', 'تشطيبات داخلية', 'تشطيبات خارجية'], icon: '🏢',
+      images: ['assets/projects/A71/A71.jpeg','assets/projects/A71/A72.jpeg','assets/projects/A71/A73.jpeg','assets/projects/A71/A74.jpeg']
+    },
+    {
+      id: 10, titleAr: 'مشروع مبنى سكني رقم A14 - منطقة النرجس الجديد التجمع الخامس', titleEn: 'Residential Building A14 - Al Narges New Settlement, Fifth District',
+      location: 'التجمع الخامس', year: '2024', category: 'سكني',
+      client: '',
+      description: 'تنفيذ مبنى سكني A14 في منطقة النرجس الجديد بالتجمع الخامس بأعلى معايير الجودة',
+      scope: ['هيكل خرساني', 'تشطيبات داخلية', 'تشطيبات خارجية'], icon: '🏢',
+      images: ['assets/projects/A14/A14.jpeg','assets/projects/A14/A15.jpeg']
+    },
+    {
+      id: 11, titleAr: 'مشروع إنشاء عدد ٥ عمارات بالتوسعات الجنوبية - ١٥ مايو', titleEn: '5 Buildings Construction - South Extensions, 15 May City',
+      location: 'مدينة 15 مايو', year: '2024', category: 'سكني',
+      client: '',
+      description: 'إنشاء عدد ٥ عمارات سكنية بالتوسعات الجنوبية في مدينة ١٥ مايو بأعلى معايير الجودة والدقة',
+      scope: ['هيكل خرساني', 'تشطيبات داخلية', 'تشطيبات خارجية'], icon: '🏗️',
+      images: ['assets/projects/5 buildings/5b.jpeg','assets/projects/5 buildings/5ba.jpeg','assets/projects/5 buildings/5bas.jpeg','assets/projects/5 buildings/5bass.jpeg','assets/projects/5 buildings/5bass8.jpeg']
     },
   ];
 

@@ -62,7 +62,7 @@ body.lang-en .services-subtitle { font-family: $font-english-body; }
 
 .card-photo {
   margin: -2rem -2rem 0;
-  height: 160px;
+  height: 220px;
   position: relative;
   overflow: hidden;
 
@@ -70,6 +70,7 @@ body.lang-en .services-subtitle { font-family: $font-english-body; }
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     transition: transform 600ms $ease-standard;
   }
 }
@@ -95,7 +96,7 @@ body.lang-en .services-subtitle { font-family: $font-english-body; }
   display: flex;
   flex-direction: column;
   gap: 0.875rem;
-  min-height: 260px;
+  min-height: 380px;
 
   &:hover {
     transform: translateY(-4px);

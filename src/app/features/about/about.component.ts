@@ -35,7 +35,6 @@ interface Pillar {
                    [alt]="lang.t('موقع بناء - رافعات عند الغروب', 'Construction site at sunset')"
                    loading="lazy" class="collage-img">
               <div class="img-shade" aria-hidden="true"></div>
-              <span class="img-label">{{ lang.t('مشاريعنا', 'Our Projects') }}</span>
               <div class="bracket-tl"></div>
             </div>
             <div class="img-card img-card-2">
@@ -43,7 +42,6 @@ interface Pillar {
                    [alt]="lang.t('إنشاء ناطحات سحاب', 'High-rise construction')"
                    loading="lazy" class="collage-img">
               <div class="img-shade" aria-hidden="true"></div>
-              <span class="img-label">{{ lang.t('جودة التنفيذ', 'Quality Execution') }}</span>
               <div class="bracket-br"></div>
             </div>
             <div class="img-card img-card-3">
@@ -51,7 +49,6 @@ interface Pillar {
                    [alt]="lang.t('فريق العمل على الموقع', 'Team at work on site')"
                    loading="lazy" class="collage-img">
               <div class="img-shade" aria-hidden="true"></div>
-              <span class="img-label">{{ lang.t('فريق متخصص', 'Specialist Team') }}</span>
             </div>
             <!-- Year badge -->
             <div class="year-badge" aria-hidden="true">

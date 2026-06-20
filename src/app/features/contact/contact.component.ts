@@ -6,6 +6,11 @@ import { ReactiveFormsModule, FormBuilder, Validators, AbstractControl } from '@
 import { LanguageService } from '../../core/services/language.service';
 import { RevealOnScrollDirective } from '../../shared/directives/reveal-on-scroll.directive';
 import { SectionHeadingComponent } from '../../shared/components/section-heading/section-heading.component';
+import emailjs from '@emailjs/browser';
+
+const EMAILJS_SERVICE_ID  = 'YOUR_SERVICE_ID';
+const EMAILJS_TEMPLATE_ID = 'YOUR_TEMPLATE_ID';
+const EMAILJS_PUBLIC_KEY  = 'YOUR_PUBLIC_KEY';
 
 @Component({
   selector: 'app-contact',
@@ -207,8 +212,8 @@ export class ContactComponent {
     {
       labelAr: 'ساعات العمل',
       labelEn: 'Working Hours',
-      valueAr: 'الأحد - الخميس: 9 ص - 5 م',
-      valueEn: 'Sun - Thu: 9 AM - 5 PM',
+      valueAr: 'السبت - الخميس: 9 ص - 5 م',
+      valueEn: 'Sat - Thu: 9 AM - 5 PM',
       link: null,
       iconPath: 'M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 5v5l4 2'
     },
@@ -225,11 +230,19 @@ export class ContactComponent {
 
     this.isSubmitting.set(true);
 
-    // Simulate API call
-    setTimeout(() => {
+    const { name, email, phone, projectType, message } = this.form.value;
+
+    emailjs.send(
+      EMAILJS_SERVICE_ID,
+      EMAILJS_TEMPLATE_ID,
+      { from_name: name, from_email: email, phone, project_type: projectType, message, to_email: 'CEO@alsarh.org' },
+      EMAILJS_PUBLIC_KEY
+    ).then(() => {
       this.isSubmitting.set(false);
       this.formSubmitted.set(true);
-    }, 1800);
+    }).catch(() => {
+      this.isSubmitting.set(false);
+    });
   }
 
   resetForm(): void {
